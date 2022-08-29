@@ -30,3 +30,4 @@ public class ArithmeticTest {
         assertEquals(0, Arithmetic.sum(6, -6));
     }
 }
+//可以直接点击单元测试错误的地方
