@@ -14,7 +14,8 @@ public class ArithmeticTest {
         if it is false, then the assertion will be false,
         and this test will fail.
         */
-
+        //常用方法,每个类前面都必须有一个@test昆虫有多个判断相等
+        //测试方法必须是非静态的
         assertEquals(30, Arithmetic.product(5, 6));
         assertEquals(-30, Arithmetic.product(5, -6));
         assertEquals(0, Arithmetic.product(0, -6));

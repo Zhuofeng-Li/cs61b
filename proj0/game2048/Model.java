@@ -2,7 +2,11 @@ package game2048;
 
 import java.util.Formatter;
 import java.util.Observable;
-
+//1.读清楚project的说明,不懂先看测试用例
+//2.先设计算法思路,再动手写,不要还未想清楚甚至没有理解清楚题意就开始写
+//3.错误的地方注意关注测试用例,使用debug与print调试
+//4.学习其设计思路
+//5.对于不清楚的函数可以跳转到其定义或者看测试用例弄清楚
 
 /** The state of a game of 2048.
  *  @author TODO: YOUR NAME HERE
