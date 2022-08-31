@@ -2,38 +2,39 @@ public class SList{
     private class IntList{
         public int item;
         public IntList next;
-        public IntList(int i , IntList n){
+        public IntList before;
+        public  IntList(int i , IntList n,IntList m){
             item = i;
             next = n;
+            before = m;
         }
     }
-    private IntList m;
+    private IntList s_first;
+    private IntList s_last;
     public int size;
     public  SList(){
-        m = new IntList(63,null);
+        s_first = new IntList(63,null,null);
+        s_last = new IntList(60,null,null);
         size = 0;
     }
     public void addFirst(int x){
-        m.next = new IntList(x,m.next);
+        s_first.next = new IntList(x,s_first.next,s_first);
         size++;
     }
     public void addLast(int x){
-        IntList p = m;//这里必须传递
-        while(p.next != null){
-            p = p.next;
-        }
-        p.next = new IntList(x,null);
+        s_last.before = new IntList(x,s_last,s_last.before);
         size++;
     }
     public  int getvalue(){
-        return m.item;
+        return s_last.before.item;
     }
 
     public static void main(String[] args) {
-        SList n = new SList();
-        //n.addFirst(5);
-        n.addLast(25);
-        System.out.println(n.size);
+        SList m = new SList();
+        m.addFirst(5);
+        m.addLast(3);
+        m.addFirst(6);
+        System.out.println(m.getvalue());
     }
 }
 
