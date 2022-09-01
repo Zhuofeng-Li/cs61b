@@ -32,22 +32,22 @@ public class TestBuggyAList {
     public void randomizedTest() {
         AListNoResizing<Integer> L = new AListNoResizing<>();
         BuggyAList<Integer> m = new BuggyAList<>();
-        boolean flag = false;
-        int N = 50000;
+        int N = 700;
         for (int i = 0; i < N; i += 1) {
             int operationNumber = StdRandom.uniform(0, 4);
             if (operationNumber == 0) {
                 // addLast
                 int randVal = StdRandom.uniform(0, 100);
                 L.addLast(randVal);
+                m.addLast(randVal);
                 System.out.println("addLast(" + randVal + ")");
             } else if (operationNumber == 1) {
                 // size
                 int size = L.size();
                 System.out.println("size: " + size);
-            } else if (flag == true&&operationNumber == 2) {
+            } else if (L.size()>0&&operationNumber == 2) {
                 assertEquals(L.getLast(),m.getLast());
-            }else if(flag == true&&operationNumber == 3){
+            }else if(L.size()>0&&operationNumber == 3){
                 assertEquals(L.removeLast(),m.removeLast());
             }else{
                 continue;

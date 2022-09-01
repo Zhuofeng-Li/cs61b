@@ -117,7 +117,7 @@ public class TimeSLList {
     }
 
     public static void time_helper1(int k1,AList<Integer> lab){
-        for(int i = 0;i<1000;i++){
+        for(int i = 0;i<k1;i++){
             lab.addLast(1);
         }
     }
