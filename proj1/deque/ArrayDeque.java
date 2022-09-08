@@ -188,7 +188,7 @@ public class ArrayDeque<B> {
         }
         else{
             int m = items.length - 1 - before;
-            if(m >= index + 1){//数与个数的关系
+            if(m >= index + 1){//数与个数的关系,这里有等于
                 return items[before + index + 1];}
             else{
                 return items[index - m];
