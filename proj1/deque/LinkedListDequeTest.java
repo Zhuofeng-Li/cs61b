@@ -2,7 +2,7 @@ package deque;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-
+//API checker:1.模板使用T作为参数
 
 /** Performs some basic linked list tests. */
 public class LinkedListDequeTest {
@@ -14,7 +14,7 @@ public class LinkedListDequeTest {
      * && is the "and" operation. */
     public void addIsEmptySizeTest() {
 
-        System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
+        System.out.println("Make sure to uncomment the lines Telow (and delete this print statement).");
 
         ArrayDeque<String> lld1 = new ArrayDeque<String>();
 
@@ -120,17 +120,17 @@ public class LinkedListDequeTest {
 
         System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
-        ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
+        LinkedListDeque<Integer> lld1 = new LinkedListDeque<>();
         ArrayDeque<Integer> lld2 = new ArrayDeque<Integer>();
         for (int i = 0; i < 5; i++) {
             lld1.addLast(i+100000);
             lld1.addFirst(i);
         }
         for (int i = 0; i < 5; i++) {
-            lld2.addLast(i+10000);
+            lld2.addLast(i+100000);
             lld2.addFirst(i);
         }
-        System.out.println(lld1.equal(lld2));
+        System.out.println(lld2.equals(null));
 //        System.out.println(lld1.get(1));
 //        for (int i = 0; i < 3330; i++) {
 //            lld1.removeLast();
