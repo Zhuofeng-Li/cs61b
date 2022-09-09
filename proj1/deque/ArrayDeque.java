@@ -1,6 +1,10 @@
 package deque;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 //
-public class ArrayDeque<B> implements Deque<B>{
+public class ArrayDeque<B> implements Deque<B>,Iterable<B>{//可以实现多个接口
     B[] items;
     int size;
     int before;
@@ -193,7 +197,7 @@ public class ArrayDeque<B> implements Deque<B>{
         }
         else{
             o = (ArrayDeque) o;//是否可以这么转化
-            return  this.printDeque_string().equals(o);
+            return  this.printDeque_string().equals(((ArrayDeque<?>) o).printDeque_string());
         }
     }
     public String printDeque_string(){
@@ -224,4 +228,32 @@ public class ArrayDeque<B> implements Deque<B>{
             return temp_string;
         }
     }
+    @Override
+    public Iterator<B> iterator() {
+        return new ArrayList_iter();//这里需要实现一个类
+    }//注意这里迭代器的实现
+    public class ArrayList_iter implements Iterator<B> {
+        int count = before;//注意这个需要实现在这里
+        @Override
+        public boolean hasNext() {
+            if (count == next - 1) {//注意这里是count
+                return false;
+            }
+            return true;
+        }
+        @Override
+        public B next() {//注意这里如果到底怎么处理
+            if (hasNext()){
+                if (count == items.length - 1) {
+                    count = 0;
+                } else {
+                    count++;//注意count与before是同步更新的
+                }
+                B temp = items[count];
+                return temp;
+            }else{
+                throw new NoSuchElementException();
+            }
     }
+}
+}

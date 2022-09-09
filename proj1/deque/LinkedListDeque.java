@@ -78,35 +78,56 @@ public class LinkedListDeque<B> implements Deque<B>{//注意这里泛型的使�
     }
     public B get(int index){
         IntNode temp = s_first.next;
-        while (index>0){
+        if(index < 0){
+            return null;
+        }
+        while (index>0 && temp != s_last){
             temp = temp.next;
             index--;
         }
+        if(temp == s_last){
+            return null;
+        }
         return temp.value;
+    }
+    public B getRecursive(int index){//这里需要辅助函数
+        IntNode temp = s_first.next;
+        if(index < 0){
+            return null;
+        }else if(index == 0){
+            return temp.value;
+        }
+        return null;
     }
     //注意这里还有一个递归get方法
     public Iterator<B> iterator(){
         return new LinkedListDeque_Iter();
     }
-    private class LinkedListDeque_Iter implements Iterator<B>{
+    private class LinkedListDeque_Iter implements Iterator<B> {
         int now;
         IntNode temp = s_first;
-        public LinkedListDeque_Iter(){
+
+        public LinkedListDeque_Iter() {
             IntNode temp = s_first;
             now = 0;
         }
+
         @Override
         public boolean hasNext() {
-           if (now < size){
-               return true;
-           }
-           return false;
+            if (now < size) {
+                return true;
+            }
+            return false;
         }
+
         @Override
         public B next() {
-            temp = temp.next;
-            now++;
-            return temp.value;
+            if (hasNext()) {
+                temp = temp.next;
+                now++;
+                return temp.value;
+            }
+            return null;
         }
     }
     public boolean equals(Object o){
@@ -126,3 +147,4 @@ public class LinkedListDeque<B> implements Deque<B>{//注意这里泛型的使�
         return false;
     }
 }
+

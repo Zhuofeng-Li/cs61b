@@ -121,16 +121,22 @@ public class LinkedListDequeTest {
         System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
         ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
+        ArrayDeque<Integer> lld2 = new ArrayDeque<Integer>();
         for (int i = 0; i < 5; i++) {
             lld1.addLast(i+100000);
-            //lld1.addFirst(i);
+            lld1.addFirst(i);
         }
-        System.out.println(lld1.get(1));
+        for (int i = 0; i < 5; i++) {
+            lld2.addLast(i+10000);
+            lld2.addFirst(i);
+        }
+        System.out.println(lld1.equal(lld2));
+//        System.out.println(lld1.get(1));
 //        for (int i = 0; i < 3330; i++) {
 //            lld1.removeLast();
 //            lld1.removeFirst();
 //        }
-        lld1.printDeque();
+
 //            for (double i = 0; i < 500000; i++) {
 //                    assertEquals("Should have the same value", i, (double) lld1.removeFirst(), 0.0);
 //                }
