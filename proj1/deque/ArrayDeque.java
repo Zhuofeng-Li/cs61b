@@ -1,8 +1,6 @@
 package deque;
-
-import java.util.Deque;
-
-public class ArrayDeque<B> {
+//
+public class ArrayDeque<B> implements Deque<B>{
     B[] items;
     int size;
     int before;
@@ -75,12 +73,6 @@ public class ArrayDeque<B> {
 //        before = 4;
 //        next = size + 5;
 //    }
-    public boolean isEmpty(){
-        if(size == 0){
-            return true;
-        }
-        return false;
-    }
     public int size(){
         return size;
     }

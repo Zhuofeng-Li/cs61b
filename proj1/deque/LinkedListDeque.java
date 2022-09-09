@@ -1,9 +1,8 @@
 package deque;
-
-import java.util.Deque;
+//包的作用:deque.ArrayDeque可以使用ArrayDeque来代替
 import java.util.Iterator;
 
-public class LinkedListDeque<B> implements Iterable<B>{//注意这里泛型的使用,继承也需要指定泛型
+public class LinkedListDeque<B> implements Deque<B>{//注意这里泛型的使用,继承也需要指定泛型
     public class IntNode{
         B value;
         private IntNode next;
@@ -37,12 +36,6 @@ public class LinkedListDeque<B> implements Iterable<B>{//注意这里泛型的�
             s_last.before.next = m;
             s_last.before = m;
         size++;
-    }
-    public boolean isEmpty(){
-        if (size == 0){
-            return true;
-        }
-        return false;
     }
     public int size(){
         return size;
@@ -84,7 +77,7 @@ public class LinkedListDeque<B> implements Iterable<B>{//注意这里泛型的�
         return temp_remove;
     }
     public B get(int index){
-        IntNode temp = s_first;
+        IntNode temp = s_first.next;
         while (index>0){
             temp = temp.next;
             index--;
