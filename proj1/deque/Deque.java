@@ -1,7 +1,7 @@
 package deque;//接口中是否可以有实例变量
-public interface Deque<T> {
-        public void addFirst(T item);
-        public void addLast(T item);
+public interface Deque<B> {
+        public void addFirst(B item);
+        public void addLast(B item);
         default public boolean isEmpty(){
                 if (size() == 0){
                         return true;
@@ -10,8 +10,8 @@ public interface Deque<T> {
         }
         public int size();
         public void printDeque();
-        public T removeFirst();
-        public T removeLast();
-        public T get(int index);
+        public B removeFirst();
+        public B removeLast();
+        public B get(int index);
 
 }

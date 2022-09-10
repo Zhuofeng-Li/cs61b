@@ -136,15 +136,19 @@ public class LinkedListDeque<T> implements Deque<T>{//注意这里泛型的使�
             return false;
         } else if (o instanceof ArrayDeque) {
             //注意这里的类型转化,为什么直接转化不行
-            return ((ArrayDeque) o).printDeque_string().equals(this.printDeque_string());
-        }
-        else if(((LinkedListDeque<?>) o).size()==this.size){
+            String temp_string = new String();
+            int i = 0;
+            while(((ArrayDeque<?>) o).get(i) != null){
+                temp_string += ((ArrayDeque<?>) o).get(i);//这里会自动转
+                i++;
+            }
+            return temp_string.equals(this.printDeque_string());
+        } else {
             return ((LinkedListDeque) o).printDeque_string().equals(printDeque_string());
     }
-        return false;
     }
 
-    public String printDeque_string() {
+    private String printDeque_string() {
         IntNode p = s_first.next;
         String temp = new String();
         while(p.next!=null){

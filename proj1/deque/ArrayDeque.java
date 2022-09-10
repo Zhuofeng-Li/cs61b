@@ -190,15 +190,22 @@ public class ArrayDeque<T> implements Deque<T> , Iterable<T> {//可以实现多�
             }
         }
     public boolean equals(Object o){
-        if(! (o instanceof Deque)){
+        if (! (o instanceof Deque)) {
             return false;
-        }
-        else{
-            o = (ArrayDeque) o;//是否可以这么转化
-            return  this.printDeque_string().equals(((ArrayDeque<?>) o).printDeque_string());
+        } else if (o instanceof LinkedListDeque) {
+            //o = (LinkedListDeque) o;//是否可以这么转化:不能
+            String temp = new String();
+            int i = 0;
+            while(((LinkedListDeque<?>) o).get(i) != null){
+                temp += ((LinkedListDeque<?>) o).get(i);//这里会自动转
+                i++;
+            }
+            return temp.equals(this.printDeque_string());
+        } else {
+            return ((ArrayDeque<?>) o).printDeque_string().equals(this.printDeque_string());
         }
     }
-    public String printDeque_string(){
+    private String printDeque_string(){//这个属于帮助函数只能隐式调用
         String temp_string = new String();
         if(before < next){
             for(int i = before + 1;i < next;i++){

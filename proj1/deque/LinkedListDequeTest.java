@@ -127,10 +127,10 @@ public class LinkedListDequeTest {
             lld1.addFirst(i);
         }
         for (int i = 0; i < 5; i++) {
-            lld2.addLast(i+100000);
+            lld2.addLast(i+1100000);
             lld2.addFirst(i);
         }
-        System.out.println(lld2.equals(null));
+        System.out.println(lld2.equals(lld1));
 //        System.out.println(lld1.get(1));
 //        for (int i = 0; i < 3330; i++) {
 //            lld1.removeLast();
