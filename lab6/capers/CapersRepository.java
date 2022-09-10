@@ -2,6 +2,7 @@ package capers;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
 import static capers.Utils.*;
 
@@ -19,9 +20,8 @@ public class CapersRepository {
     /** Current Working Directory. */
     static final File CWD = new File(System.getProperty("user.dir"));//注意:这里不会创建文件
     /** Main metadata folder. */
-    static final File CAPERS_FOLDER = join(".capers/","dogs/","story"); // TODO Hint: look at the `join`
-             //注意这里路径不确定                               //      function in Utils
-
+    static final File CAPERS_FOLDER = join(".capers"); // TODO Hint: look at the `join`
+    //      function in Utils
     /**
      * Does required filesystem operations to allow for persistence.
      * (creates any necessary folders or files)
@@ -32,7 +32,12 @@ public class CapersRepository {
      *    - story -- file containing the current story
      */
     public static void setupPersistence() throws IOException {
-        CAPERS_FOLDER.createNewFile();
+        //the right way to do
+        CAPERS_FOLDER.mkdir();
+        File dogs = join(CAPERS_FOLDER.toString(),"dogs");
+        dogs.mkdir();
+        File story = join(CAPERS_FOLDER.toString(),"story");
+        story.createNewFile();
     }
 
     /**
@@ -42,7 +47,13 @@ public class CapersRepository {
      */
     public static void writeStory(String text) {
         // TODO
-        writeContents(CAPERS_FOLDER,text);
+        File temp = join(CAPERS_FOLDER.toString(),"story");
+        String temp_string = readContentsAsString(temp);
+        if (temp_string == " ") {//notice kong hang
+            temp_string = text;
+        }
+        temp_string = temp_string + "\n" + text;
+        writeContents(temp, temp_string);
     }
 
     /**
@@ -52,8 +63,10 @@ public class CapersRepository {
      */
     public static void makeDog(String name, String breed, int age) {
         // TODO
-        Dog perment_Dog = new Dog(name, breed, age);
-        System.out.println(perment_Dog.toString());
+        Dog perment_dog = new Dog(name, breed, age);
+        File temp = join(CAPERS_FOLDER,"dogs");
+        perment_dog.saveDog();
+        System.out.println(perment_dog.toString());
     }
 
     /**
@@ -64,7 +77,8 @@ public class CapersRepository {
      */
     public static void celebrateBirthday(String name) {
         // TODO
-        Dog d = new Dog(name);
+        Dog temp = Dog.fromFile(name);//use API directly
+        temp.haveBirthday();
 
     }
 }
