@@ -49,10 +49,11 @@ public class CapersRepository {
         // TODO
         File temp = join(CAPERS_FOLDER.toString(),"story");
         String temp_string = readContentsAsString(temp);
-        if (temp_string == " ") {//notice kong hang
-            temp_string = text;
+        if (temp_string.equals("")) {//notice kong hang : equals
+            temp_string = text;// why two lines
+        } else {
+            temp_string = temp_string + "\n" + text;
         }
-        temp_string = temp_string + "\n" + text;
         writeContents(temp, temp_string);
     }
 
