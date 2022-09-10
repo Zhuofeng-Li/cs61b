@@ -131,21 +131,18 @@ public class LinkedListDeque<T> implements Deque<T>{//注意这里泛型的使�
         }
     }
     public boolean equals(Object o){//注意这里只要是Deque就需要判断,必须统一接口
-        IntNode temp = s_first.next;
         if(!(o instanceof Deque)){
             return false;
-        } else if (o instanceof ArrayDeque) {
-            //注意这里的类型转化,为什么直接转化不行
-            String temp_string = new String();
+        } else  {
+            o = (Deque) o;//是否可以这么转化:不能
+            String temp = new String();
             int i = 0;
-            while(((ArrayDeque<?>) o).get(i) != null){
-                temp_string += ((ArrayDeque<?>) o).get(i);//这里会自动转
+            while(((Deque) o).get(i) != null){
+                temp +=  ((Deque) o).get(i);//这里会自动转
                 i++;
             }
-            return temp_string.equals(this.printDeque_string());
-        } else {
-            return ((LinkedListDeque) o).printDeque_string().equals(printDeque_string());
-    }
+            return temp.equals(this.printDeque_string());
+        }
     }
 
     private String printDeque_string() {
