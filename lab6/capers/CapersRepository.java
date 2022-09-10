@@ -22,6 +22,7 @@ public class CapersRepository {
     /** Main metadata folder. */
     static final File CAPERS_FOLDER = join(".capers"); // TODO Hint: look at the `join`
     //      function in Utils
+    //注意这里
     /**
      * Does required filesystem operations to allow for persistence.
      * (creates any necessary folders or files)
@@ -33,6 +34,7 @@ public class CapersRepository {
      */
     public static void setupPersistence() throws IOException {
         //the right way to do
+        int i = 0;
         CAPERS_FOLDER.mkdir();
         File dogs = join(CAPERS_FOLDER.toString(),"dogs");
         dogs.mkdir();
@@ -49,12 +51,14 @@ public class CapersRepository {
         // TODO
         File temp = join(CAPERS_FOLDER.toString(),"story");
         String temp_string = readContentsAsString(temp);
-        if (temp_string.equals("")) {//notice kong hang : equals
+        if (temp_string.equals("")) {//空行的表示是:" "
             temp_string = text;// why two lines
         } else {
             temp_string = temp_string + "\n" + text;
         }
+        System.out.println(temp_string);
         writeContents(temp, temp_string);
+        //注意Contents会覆盖之前的内容
     }
 
     /**
