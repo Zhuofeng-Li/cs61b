@@ -134,10 +134,9 @@ public class LinkedListDeque<T> implements Deque<T>{//注意这里泛型的使�
         if(!(o instanceof Deque)){
             return false;
         } else  {
-            o = (Deque) o;//是否可以这么转化:不能
             String temp = new String();
             int i = 0;
-            while(((Deque) o).get(i) != null){
+            while(((Deque<?>) o).get(i) != null){
                 temp +=  ((Deque) o).get(i);//这里会自动转
                 i++;
             }
