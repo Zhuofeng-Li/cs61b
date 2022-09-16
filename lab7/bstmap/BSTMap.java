@@ -3,7 +3,7 @@ package bstmap;
 import java.util.Iterator;
 import java.util.Set;
 
-public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> { //继承这里的接口以实现比较
+public class BSTMap<K extends Comparable, V> implements Map61B<K, V> { //继承这里的接口以实现比较
     private BSTNode first; //类似链表将内部的指针实现隐藏:注意命名
     private int size;
     @Override
