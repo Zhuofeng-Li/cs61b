@@ -1,9 +1,6 @@
 package hashmap;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 //设计思想:每个bukect中放置的是node(里面有key,value),hashcode的作用在与确定其在bukects中的位置
 //问题:1.接口的remove等参数怎么设置 2.如果resize数组的时候,如何调整现有的Node:不用处理remove方法
 //3.如何处理那些需要copy的元素:类似数组链表,直接遍历整个然后重新放置
@@ -122,7 +119,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     }
     private void resize(int i) {//注意扩容之后所有的其实都需要copy一次
         Collection<Node>[] temp = new Collection[i];
-        for(int k = 0; k < i; k++) {
+        for (int k = 0; k < i; k++) {
             temp[k] = createBucket();
         }
         for (int m = 0; m < buckets.length; m++)
@@ -205,9 +202,9 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
 
     /* Instance Variables */
     private Collection<Node>[] buckets;
-    int initialSize;
-    int size = 0;
-    double maxLoad;
+    private int initialSize;
+    private int size = 0;
+    private double maxLoad;
 
 // You should probably define some more!
 
@@ -232,7 +229,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      * OWN BUCKET DATA STRUCTURES WITH THE NEW OPERATOR!
      */
     protected Collection<Node> createBucket() {
-        return null;
+        return new LinkedList<>();
 
     }
 
