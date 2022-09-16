@@ -59,7 +59,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
 
     @Override
     public void clear() { //注意这里的clear只能把其所有的bukect指向null
-        for(int i = 0; i < initialSize; i++) {
+        for (int i = 0; i < initialSize; i++) {
             buckets[i] = null;
         }
         size = 0;
@@ -80,8 +80,8 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         if (m < 0) {
             m = Math.floorMod(m, initialSize);
         }
-         //注意这里必须判断空
-        if (buckets[m].size() == 0) {
+         //注意这里必须判断空:如果将bucket指向null的话,size无法调用
+        if (buckets[m] == null) {
             return null;
         }
         for (Node i : buckets[m]){

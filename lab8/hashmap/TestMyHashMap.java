@@ -36,9 +36,9 @@ public class TestMyHashMap {
         }
         b.clear();
         assertEquals(0, b.size());
-//        for (int i = 0; i < 455; i++) {
-//            assertTrue(null == b.get("hi" + i) && !b.containsKey("hi" + i));
-//        }
+        for (int i = 0; i < 455; i++) {
+            assertTrue(null == b.get("hi" + i) && !b.containsKey("hi" + i));
+        }
     }
 
     // assumes put works
