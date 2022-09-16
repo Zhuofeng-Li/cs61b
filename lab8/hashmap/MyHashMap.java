@@ -58,9 +58,9 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     }
 
     @Override
-    public void clear() { //注意这里的clear只能把其所有的bukect指向null
+    public void clear() { //注意这里的clear只能把其所有的bukect中的元素换为null
         for (int i = 0; i < initialSize; i++) {
-            buckets[i] = null;
+            buckets[i].clear();
         }
         size = 0;
     }

@@ -27,7 +27,8 @@ public interface Map61B<K, V> extends Iterable<K> {
      * If the map previously contained a mapping for the key,
      * the old value is replaced.
      */
-    void put(K key, V value);
+    void
+    put(K key, V value);
 
     /** Returns a Set view of the keys contained in this map. */
     Set<K> keySet();
